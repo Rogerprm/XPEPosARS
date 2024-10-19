@@ -7,10 +7,8 @@ from io import BytesIO
 from dotenv import load_dotenv
 
 load_dotenv()
-
 s3 = boto3.client('s3')
 bucket_name = os.getenv('S3_BUCKET')
-
 db_user = os.getenv('DB_USER')
 db_password = os.getenv('DB_PASSWORD')
 db_host = os.getenv('DB_HOST')
@@ -32,7 +30,7 @@ def get_processed_files():
 def save_to_database(df, table_name):
     df.to_sql(table_name, con=engine, if_exists='append', index=False)
 
-# Copiar arquivo para o S3
+# Transfere arquivo para o S3
 def upload_to_s3(file_name, file_content):
     s3.upload_fileobj(BytesIO(file_content), bucket_name, file_name)
 
@@ -56,7 +54,6 @@ def process_files():
                 with engine.connect() as conn:
                     conn.execute("INSERT INTO file_control (filename) VALUES (%s)", (file_name,))
 
-# Função principal
 if __name__ == "__main__":
     process_files()
 
