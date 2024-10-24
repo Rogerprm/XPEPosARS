@@ -12,6 +12,7 @@ A arquitetura consiste em dois principais sistemas integrados:
 1. Sistema de Microservices e Integração AWS
 2. Sistema de Processamento com AWS Batch
 
+
 1. Especificação dos Componentes da Arquitetura
 - API Gateway
 Função: Atua como ponto de entrada para todas as requisições HTTP/HTTPS feitas para os microservices.
@@ -51,7 +52,8 @@ Integrações: APIs acessam diretamente o RDS para gravar e ler dados transacion
 - S3 (Simple Storage Service)
 Função: Armazenamento de relatórios e arquivos estáticos processados, incluindo planilhas XLS carregadas via AWS Batch.
 Criptografia: Armazenamento seguro com criptografia no lado do servidor (SSE-S3).
-Integrações: AWS Batch faz upload dos arquivos processados diretamente no S3 para consulta posterior.
+Integrações: AWS Batch faz upload dos arquivosprocessados diretamente no S3 para consulta posterior.
+
 2. Fluxo de Dados e Integrações
 - Fluxo Principal de Microservices
 O usuário acessa o sistema via API Gateway.
@@ -65,8 +67,13 @@ Relatórios e arquivos processados são armazenados no S3 para consulta futura.
 O FTP envia arquivos XLS para a AWS, que são processados pelo AWS Batch.
 O AWS Batch executa jobs de processamento (scripts Python) para transformar os dados.
 Os dados são carregados no RDS, e os arquivos originais ou processados são armazenados no S3.
+
 3. Provisionamento com Terraform
 - Vantagens de Usar Terraform
 Infraestrutura como Código: O Terraform permite que a infraestrutura seja descrita e gerenciada como código, facilitando a automação e a reprodução dos ambientes.
 Modularidade: Cada serviço AWS é definido em um módulo separado, o que facilita a manutenção e a escalabilidade do ambiente.
 Versionamento e Controle: O uso de arquivos de estado no S3 permite rastrear mudanças na infraestrutura e garantir consistência entre ambientes.
+
+4. Desenho detalhado com o C4 Nivel 3
+
+![](/src/images/jpg/c4n3-2.png)
