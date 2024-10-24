@@ -30,15 +30,16 @@ Configuração:
 Cluster: Agrupamento de containers Docker executando diferentes APIs.
 Serviços e Tasks: Cada API roda como um serviço separado no ECS, com tarefas configuradas para escalar automaticamente.
 Microservices Implementados:
-SalesAPI: Processa vendas e notifica o sistema de estoque via SQS.
-FinanceAPI: Gerencia transações financeiras e interage com ReportingAPI via eventos.
-InventoryAPI: Escuta eventos do SQS para manter o estoque atualizado com base nas vendas.
-HRAPI: Gerencia informações dos funcionários e integração com RDS.
+* SalesAPI: Processa vendas e notifica o sistema de estoque via SQS.
+* FinanceAPI: Gerencia transações financeiras e interage com ReportingAPI via eventos.
+* InventoryAPI: Escuta eventos do SQS para manter o estoque atualizado com base nas vendas.
+* HRAPI: Gerencia informações dos funcionários e integração com RDS.
 - SQS (Simple Queue Service)
 Função: Comunicação assíncrona entre os microservices, garantindo desacoplamento e confiabilidade no processamento de dados.
-Filas Configuradas:
-Sales-Inventory: Notifica mudanças no estoque após cada venda.
-Finance-Reporting: Notifica o sistema de relatórios após eventos financeiros.
+#### Filas Configuradas:
+* Sales-Inventory: Notifica mudanças no estoque após cada venda.
+* Finance-Reporting: Notifica o sistema de relatórios após eventos financeiros.
+
 Processamento Assíncrono: Permite que os serviços troquem informações sem dependência direta de tempo de execução.
 - Cognito
 Função: Provedor de identidade, gerenciando autenticação e autorização.
