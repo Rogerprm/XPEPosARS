@@ -10,4 +10,5 @@ Esta solução utiliza uma arquitetura baseada em microservices, com componentes
 A arquitetura consiste em dois principais sistemas integrados:
 
 1 - Sistema de Microservices e Integração AWS
+
 2 - Sistema de Processamento com AWS Batch
